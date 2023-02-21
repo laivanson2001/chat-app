@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-SSP;
+  }
+}
+
+@layer components {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-fill {
+    flex: 1;
+  }
+
+  .overflow-y-overlay {
+    overflow-y: overlay;
+  }
+
+  .hover-smooth {
+    @apply transition-all duration-200 ease-linear;
+  }
+
+  .owner {
+    @apply flex-row-reverse;
+  }
+
+  .input-styled {
+    @apply sm:text-[18px];
+    @apply text-[16px];
+    @apply w-full p-3 focus:outline-none border-b-[1px];
+    @apply bg-main-color text-dark border-b-dark;
+    @apply placeholder:text-dark;
+  }
+  .input-styled-home {
+    @apply sm:text-[18px];
+    @apply text-[16px];
+    @apply px-[6px] pt-[7px] pb-2 focus:outline-none;
+
+    /* light mode */
+    @apply bg-inputLightMode;
+
+    /* dark mode */
+    @apply dark:bg-home-search dark:text-gray-300 dark:border-b-dark;
+    @apply dark:placeholder:text-placeholder-chat;
+  }
+  .input-styled-chat {
+    @apply sm:text-[18px];
+    @apply text-[16px];
+    @apply w-full p-3 focus:outline-none border-b-[1px];
+
+    /* light mode */
+    @apply bg-inputLightMode;
+
+    /* dark mode */
+    @apply dark:bg-home-search dark:text-gray-300 dark:border-b-dark;
+    @apply dark:placeholder:text-placeholder-chat;
+  }
+
+  .button-styled {
+    @apply border-none font-bold cursor-pointer p-[10px];
+    @apply bg-text text-main-color;
+  }
+
+  .text-ellipsis {
+    @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
+  }
+
+  .modal-close-btn {
+    @apply absolute top-2 right-2 flex-center w-10 h-10 rounded-full;
+    @apply cursor-pointer transition-all;
+  }
+
+  .modal-btn {
+    @apply flex-center;
+    @apply min-w-[120px];
+    @apply rounded-lg px-4 py-2 h-full transition-all;
+    @apply select-none font-bold;
+    @apply cursor-pointer hover:opacity-80;
+  }
+}
+
+.transition-smooth {
+  transition: all 0.2s linear;
+}
+
+.message-img {
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 0.75rem;
+}
+.message-vid {
+  cursor: pointer;
+  border-radius: 0.75rem;
+}
+
+.overflow-overlay {
+  overflow-y: overlay;
+}
+
+.img-shared,
+.video-shared {
+  height: 5.5rem;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  object-fit: cover;
+}
+.file-shared {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  gap: 0.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  -webkit-text-decoration-line: underline;
+  text-decoration-line: underline;
+}
+
+.ReactCollapse--collapse {
+  transition: all 0.1s linear;
+}
