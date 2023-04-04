@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const useDarkMode = () => {
   // Theme need to add to <html/>
   const [curTheme, setCurTheme] = useState(
-    JSON.parse(localStorage.getItem('theme')) ?? 'dark',
+    JSON.parse(localStorage.getItem('theme')) ?? 'light',
   );
   // Theme need to remove from <html/>
   const theme = curTheme == 'dark' ? 'light' : 'dark';
@@ -12,7 +12,7 @@ const useDarkMode = () => {
   useEffect(() => {
     const stgTheme = JSON.parse(localStorage.getItem('theme'));
     if (!stgTheme) {
-      localStorage.setItem('theme', JSON.stringify('dark'));
+      localStorage.setItem('theme', JSON.stringify('light'));
     }
   }, []);
 
