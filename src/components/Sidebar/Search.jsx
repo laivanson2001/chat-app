@@ -50,7 +50,7 @@ const Search = ({ username, setUsername, setUser, onKeyDown }) => {
           ref={inputRef}
           className="input-styled-home flex-1 dark:bg-home-search"
           type="text"
-          placeholder="Finding on CornyChat"
+          placeholder="Tìm kiếm"
         />
       </div>
     </div>

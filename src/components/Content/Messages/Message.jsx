@@ -213,7 +213,7 @@ const Message = ({
             ) : (
               chatContent == '' && (
                 <span className="flex-center select-none dark:text-gray-400 text-gray-600 rounded-xl border border-gray-600 px-4 py-2">
-                  Revoked Message
+                  Tin nhắn đã thu hồi
                 </span>
               )
             )}

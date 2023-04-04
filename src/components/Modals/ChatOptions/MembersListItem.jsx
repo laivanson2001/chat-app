@@ -8,6 +8,7 @@ import {
   removeUserRoomId,
   updateAdmin,
 } from '../../../firebase/services';
+import { toast } from 'react-toastify';
 
 const MembersListItem = ({
   currentUserId,
@@ -32,6 +33,7 @@ const MembersListItem = ({
   // roomId, memberInfo
   const handleUpdateAdmin = async () => {
     await updateAdmin(roomId, memberInfo);
+    toast.success('Thêm quản trị viên thành công')
   };
 
   const handleRemoveMember = async () => {
@@ -40,6 +42,7 @@ const MembersListItem = ({
 
     // Remove roomId of user in collection "users"
     await removeUserRoomId(memberInfo?.uid, roomId);
+    toast.success(`Đã xóa ${memberInfo.displayName} ra khỏi nhóm`);
   };
 
   return (
@@ -52,7 +55,7 @@ const MembersListItem = ({
       <div className="flex flex-col justify-center flex-1">
         <p className="text-sm capitalize">{memberInfo?.displayName}</p>
         <span className="text-xs text-gray-400">
-          {memberInfo?.isAdmin ? 'Admin' : 'Member'}
+          {memberInfo?.isAdmin ? 'Quản trị viên' : 'Thành viên'}
         </span>
       </div>
       {isCurUserAdmin && memberInfo?.uid != currentUserId && (
@@ -71,14 +74,14 @@ const MembersListItem = ({
                   onClick={handleUpdateAdmin}
                   className="duration-150 rounded p-1 px-2 dark:hover:bg-gray-600 hover:bg-slate-400"
                 >
-                  Add as Admin
+                  Thêm quản trị viên
                 </li>
               )}
               <li
                 onClick={handleRemoveMember}
                 className="duration-150 rounded p-1 px-2 dark:hover:bg-gray-600 hover:bg-slate-400"
               >
-                Remove
+                Xóa khỏi nhóm
               </li>
             </ul>
           )}

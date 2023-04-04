@@ -11,6 +11,7 @@ import {
 } from '../../firebase/services';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../../reducers/actions';
+import { toast } from 'react-toastify';
 
 const AddGroupChatModal = () => {
   const { currentUser } = useContext(AuthContext);
@@ -41,23 +42,23 @@ const AddGroupChatModal = () => {
   const handleAddMember = async (uid) => {
     if (uid.trim() === '') {
       setFriendIdInput('');
-      setNotification('Please fill out this field!');
+      setNotification('Vui lòng nhập đủ thông tin!');
       return;
     }
     const res = await getUser(uid);
     if (!res.size) {
       setFriendIdInput('');
-      setNotification("This user doesn't exist!");
+      setNotification("Người dùng không tồn tại!");
       return;
     }
     if (members.length > 10) {
-      setNotification('The maximum number of members has been reached!');
+      setNotification('Vượt quá số lượng thành viên!');
       return;
     }
     const isAdded = members.some((mem) => mem.uid == uid);
     if (isAdded) {
       setFriendIdInput('');
-      setNotification('User has been added before!');
+      setNotification('Thành viên đã có trong nhóm!');
       return;
     }
     res.forEach((doc) =>
@@ -78,11 +79,12 @@ const AddGroupChatModal = () => {
   const handleCreateGroupChat = async (e) => {
     e.preventDefault();
     if (members.length < 2) {
-      setNotification('Need at least 2 user to perform this action!');
+      setNotification('Cần ít nhất 2 thành viên để tạo nhóm!');
       return;
     }
 
     const res = await createNewRoom(inputRoomName, members, 'group');
+    toast.success('Tạo nhóm chat thành công')
     members.forEach(async (member) => {
       const { uid } = member;
       const user = await getUser(uid);
@@ -98,29 +100,29 @@ const AddGroupChatModal = () => {
       <div className="flex-center bg-lightMode dark:bg-darkMode rounded-lg px-3 py-5">
         <form onSubmit={handleCreateGroupChat} className="py-3 px-5">
           <div className="flex flex-col mb-5">
-            <div className="font-bold mb-2">Name Group: </div>
+            <div className="font-bold mb-2">Tên nhóm: </div>
             <input
               value={inputRoomName}
               onChange={(e) => setInputRoomName(e.target.value)}
               required
               className="input-styled-chat rounded-xl px-4 py-2"
-              placeholder="Room name..."
+              placeholder="Nhập tên nhóm"
             />
           </div>
           <div className="flex flex-col">
-            <div className="font-bold mb-2">Member ID: </div>
+            <div className="font-bold mb-2">Thành viên ID: </div>
             <div className="flex-center justify-start gap-2">
               <input
                 value={friendIdInput}
                 onChange={(e) => setFriendIdInput(e.target.value)}
                 className="md:w-60 input-styled-chat rounded-xl px-4 py-2"
-                placeholder="Friend ID..."
+                placeholder="Nhập ID..."
               />
               <div
                 onClick={() => handleAddMember(friendIdInput)}
                 className="modal-btn bg-emerald-600"
               >
-                Add
+                Thêm
               </div>
             </div>
           </div>
@@ -155,7 +157,7 @@ const AddGroupChatModal = () => {
           {/* Options Control */}
           <div className="flex-center justify-end mt-10 gap-4">
             <button type="submit" className="modal-btn bg-cyan-600 min-w-full">
-              Create
+              Tạo nhóm
             </button>
           </div>
         </form>

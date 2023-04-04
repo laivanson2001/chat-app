@@ -9,6 +9,7 @@ import { auth, storage } from '../firebase/config';
 import { faImage } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { createNewUser } from '../firebase/services';
+import { toast } from 'react-toastify';
 
 const Register = () => {
   const [error, setError] = useState(false);
@@ -35,6 +36,7 @@ const Register = () => {
         (error) => {
           setError(true);
           console.log(error);
+          toast.error('Lỗi')
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -47,6 +49,7 @@ const Register = () => {
 
             // Add Document account to collection 'users'
             await createNewUser(displayName, email, downloadURL, res.user.uid);
+            toast.success('Đăng ký tài khoản thành công')
             navigate('/');
           });
         },
@@ -57,16 +60,13 @@ const Register = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex-center flex-wrap bg-dark">
+    <div className="w-screen h-screen flex-center flex-wrap bg-white">
       <div
         className="flex-center flex-col gap-2 rounded-xl 
-        bg-main-color px-10 py-3 sm:px-14 sm:py-5 w-[450px]"
+         px-10 py-3 sm:px-14 sm:py-5 w-[450px]"
       >
-        <span className="sm:text-[32px] font-bold font-rubikWet text-2xl">
+        <span className="sm:text-[32px] font-bold font-rubikWet text-2xl logo-text mb-5">
           Atomic Chat
-        </span>
-        <span className="sm:text-[20px] text-[16px] font-rubikDirt">
-          Register
         </span>
         <form
           onSubmit={handleSubmit}
@@ -74,41 +74,41 @@ const Register = () => {
         >
           <input
             required
-            className="input-styled"
+            className="input-styled input-login border-b-0 rounded-2xl"
             type="text"
-            placeholder="Display name"
+            placeholder="Họ tên"
           />
           <input
             required
-            className="input-styled"
+            className="input-styled input-login border-b-0 rounded-2xl"
             type="email"
-            placeholder="Email address"
+            placeholder="Email"
           />
           <input
             required
-            className="input-styled"
+            className="input-styled input-login border-b-0 rounded-2xl"
             type="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
           />
           <input style={{ display: 'none' }} type="file" id="file" />
           <label
             className="input-styled flex-center justify-start gap-[10px] 
-            cursor-pointer border-none font-[14px] p-[15px]"
+            cursor-pointer border-none font-[14px] p-[15px] input-login border-b-0 rounded-2xl"
             htmlFor="file"
           >
             <FontAwesomeIcon
               icon={faImage}
               className="icon-add-file text-2xl"
             />
-            <span className="">Add an avatar</span>
+            <span className="">Thêm ảnh đại diện</span>
           </label>
-          <button className="w-full button-styled">Sign in</button>
+          <button className="w-full button-styled button-login rounded-3xl mt-2">Đăng ký</button>
         </form>
-        {error && <i className="font-bold text-xl">Choose an image!</i>}
+        {error && <p className="font-bold text-xl text-red-500">Vui lòng chọn ảnh!</p>}
         <p>
-          You do have an account?{' '}
+          Bạn đã có tài khoản?{' '}
           <Link to="/login" className="font-bold text-bg-messages">
-            <u>Login</u>
+            <u>Đăng nhập</u>
           </Link>
         </p>
       </div>

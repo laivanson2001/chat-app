@@ -22,7 +22,7 @@ const AddGroup = () => {
         className="flex-center p-2 rounded-xl cursor-pointer hover:bg-hoverLightMode dark:hover:bg-hover"
       >
         <FontAwesomeIcon icon={faUsersRectangle} />
-        <span className="pl-2 font-bold">Add a new group conversation</span>
+        <span className="pl-2 font-bold">Tạo nhóm chat mới</span>
       </div>
       {modalName == 'add-group' && <AddGroupChatModal />}
     </div>

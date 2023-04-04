@@ -19,7 +19,7 @@ const ChatOptions = ({ roomId, roomInfo }) => {
           onClick={() => setShow(!show)}
           className="font-bold p-2 rounded-md cursor-pointer hover:bg-hoverLightMode dark:hover:bg-hover"
         >
-          Customize Options
+          Tùy chỉnh
         </div>
       </div>
       <Collapse isOpened={show} checkTimeout={0}>

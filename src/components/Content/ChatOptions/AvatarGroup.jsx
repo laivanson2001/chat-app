@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { uploadBytesResumable, ref, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../../firebase/config';
 import { updateGroupAvatar } from '../../../firebase/services';
+import { toast } from 'react-toastify';
 
 const AvatarGroup = ({ roomId }) => {
   const handleChange = (file) => {
@@ -21,6 +22,7 @@ const AvatarGroup = ({ roomId }) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
           // roomId, url
+          toast.success('Đổi ảnh nhóm thành công')
           await updateGroupAvatar(roomId, url);
         });
       },

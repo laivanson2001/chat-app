@@ -52,7 +52,7 @@ const InfoChat = () => {
       {/* header */}
       <div className="flex justify-between">
         <div className="font-bold select-none sm:text-xl md:text-2xl">
-          Chat Details
+          Thông tin
         </div>
         <div
           onClick={handleCloseInfoChat}

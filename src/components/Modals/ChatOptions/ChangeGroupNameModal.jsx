@@ -3,12 +3,14 @@ import { updateGroupName } from '../../../firebase/services';
 import { closeModal } from '../../../reducers/actions';
 
 import ModalsTemplate from '../ModalsTemplate';
+import { toast } from 'react-toastify';
 
 const ChangeGroupNameModal = ({ dispatch, roomId, roomName }) => {
   const [valueInput, setValueInput] = useState(roomName);
 
   const handleChangeName = async () => {
     await updateGroupName(roomId, valueInput);
+    toast.success('Đổi tên nhóm thành công')
     dispatch(closeModal());
   };
 
@@ -22,7 +24,7 @@ const ChangeGroupNameModal = ({ dispatch, roomId, roomName }) => {
     <ModalsTemplate>
       <div className="w-full max-w-[320px] md:max-w-[500px] flex-center flex-col bg-lightMode dark:bg-darkMode rounded-lg px-3 py-5">
         <div className="pb-2 flex-center font-bold text-2xl mb-3">
-          Change Group Name
+          Đổi tên nhóm
         </div>
         <input
           required
@@ -38,7 +40,7 @@ const ChangeGroupNameModal = ({ dispatch, roomId, roomName }) => {
             onClick={handleChangeName}
             className="w-full modal-btn bg-emerald-600"
           >
-            Save
+            Thay đổi
           </div>
         </div>
       </div>

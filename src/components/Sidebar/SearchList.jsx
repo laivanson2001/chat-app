@@ -32,7 +32,7 @@ const SearchList = ({ isSearching, setUser, setUsername, users }) => {
   const handleSelect = async (user) => {
     // Click yourself
     if (currentUser.uid == user.uid) {
-      alert('Self chat feature is not developed yet!');
+      alert('Hiện tại chưa hỗ trợ!');
       return;
     }
 

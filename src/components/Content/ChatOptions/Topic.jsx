@@ -5,11 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { colors } from '../../../constants/colors';
 import { AppContext } from '../../../context/AppProvider';
+import { toast } from 'react-toastify';
 
 const renderTopicTheme = (showTopic, topicTheme, setTopicTheme) => {
   const handleChangeTopic = (color) => {
     localStorage.setItem('topic', JSON.stringify(color));
     setTopicTheme(color);
+    toast.success('Đổi nền trò chuyện thành công')
   };
 
   return (

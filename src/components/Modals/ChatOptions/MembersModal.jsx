@@ -8,6 +8,7 @@ import {
   updateMembersGroup,
   updateUserRooms,
 } from '../../../firebase/services';
+import { toast } from 'react-toastify';
 
 const MembersModal = ({ roomId, members }) => {
   const [inputValueUserId, setInputValueUserId] = useState('');
@@ -29,13 +30,13 @@ const MembersModal = ({ roomId, members }) => {
     const res = await getUser(userId);
     if (!res.size) {
       setInputValueUserId('');
-      setNotification("This user doesn't exist!");
+      setNotification("Người dùng không tồn tại!");
       return;
     }
     const isAdded = members.some((mem) => mem.uid == userId);
     if (isAdded) {
       setInputValueUserId('');
-      setNotification('User has been added before!');
+      setNotification('Người dùng đã trong nhóm!');
       return;
     }
     res.forEach((doc) =>
@@ -47,6 +48,7 @@ const MembersModal = ({ roomId, members }) => {
       }),
     );
     await updateMembersGroup(roomId, members);
+    toast.success('Thêm thành viên thành công')
     res.forEach((doc) => updateUserRooms(userId, roomId));
     setInputValueUserId('');
     setNotification('');
@@ -77,7 +79,7 @@ const MembersModal = ({ roomId, members }) => {
               role == 'All' ? 'bg-inputLightMode dark:bg-hover' : ''
             }`}
           >
-            All
+            Tất cả
           </div>
           <div
             onClick={() => handleShowRole('Admin')}
@@ -85,7 +87,7 @@ const MembersModal = ({ roomId, members }) => {
               role == 'Admin' ? 'bg-inputLightMode dark:bg-hover' : ''
             }`}
           >
-            Admin
+            Quản trị viên
           </div>
           <div
             onClick={() => handleShowRole('Member')}
@@ -93,7 +95,7 @@ const MembersModal = ({ roomId, members }) => {
               role == 'Member' ? 'bg-inputLightMode dark:bg-hover' : ''
             }`}
           >
-            Members
+            Thành viên
           </div>
         </div>
 
@@ -101,14 +103,14 @@ const MembersModal = ({ roomId, members }) => {
           <input
             value={inputValueUserId}
             onChange={(e) => setInputValueUserId(e.target.value)}
-            placeholder="New member ID..."
+            placeholder="Nhập ID..."
             className="w-full input-styled-chat rounded-lg"
           />
           <div
             onClick={handleAddMember}
             className="modal-btn h-full bg-emerald-600"
           >
-            Add
+            Thêm
           </div>
         </div>
 

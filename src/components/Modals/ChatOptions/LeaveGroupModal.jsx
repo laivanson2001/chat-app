@@ -9,6 +9,7 @@ import {
 } from '../../../firebase/services';
 import { closeModal } from '../../../reducers/actions';
 import ModalsTemplate from '../ModalsTemplate';
+import { toast } from 'react-toastify';
 
 const LeaveGroupModal = ({ roomId, isCurrentUserAdmin }) => {
   const { currentUser } = useContext(AuthContext);
@@ -28,6 +29,7 @@ const LeaveGroupModal = ({ roomId, isCurrentUserAdmin }) => {
     // Remove roomId out of user data
     // uid, roomId
     await removeUserRoomId(currentUser.uid, roomId);
+    toast.success("Rời nhóm thành công")
     dispatch(closeModal());
     navigate('/');
   };
@@ -37,8 +39,8 @@ const LeaveGroupModal = ({ roomId, isCurrentUserAdmin }) => {
       <div className="w-full max-w-[300px] md:max-w-[380px] flex-center flex-col bg-lightMode dark:bg-darkMode rounded-lg px-3 py-5">
         <div className="pb-2 flex-center font-bold text-xl md:text-2xl">
           <span className="text-center">
-            DO YOU REALLY WANT TO LEAVE <br />
-            THIS GROUP!
+            Bạn chắc chắn muốn rời <br />
+            nhóm này!
           </span>
         </div>
         <div className="flex-center justify-end w-full mt-8">
@@ -46,7 +48,7 @@ const LeaveGroupModal = ({ roomId, isCurrentUserAdmin }) => {
             onClick={handleLeaveGroup}
             className="w-full modal-btn bg-rose-600"
           >
-            Leave
+            Xác nhận
           </div>
         </div>
       </div>

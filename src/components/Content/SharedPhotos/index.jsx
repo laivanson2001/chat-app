@@ -16,13 +16,13 @@ const SharedPhotos = ({ onShowMediaModal, sharedPhotoData }) => {
           onClick={handleClick}
           className="font-bold p-2 rounded-md cursor-pointer hover:bg-hoverLightMode dark:hover:bg-hover"
         >
-          Shared Images
+          Ảnh chia sẻ
         </div>
         <div
           onClick={onShowMediaModal}
           className="flex-center p-2 rounded-md cursor-pointer hover:bg-hoverLightMode dark:hover:bg-hover"
         >
-          See all
+          Tất cả
         </div>
       </div>
 

@@ -124,3 +124,19 @@
 .ReactCollapse--collapse {
   transition: all 0.1s linear;
 }
+
+.logo-text {
+  background             : linear-gradient(81.84deg, #0099ff -9.4%, #a033ff 51.57%, #ff5280 84.07%, #ff7061 90.59%);
+  -webkit-background-clip: text;
+  color                  : transparent;
+}
+
+.input-login {
+  background: rgba(0, 0, 0, .04);
+}
+
+.button-login {
+  background-color: #0a7cff;
+  border-color    : #0a7cff;
+  color           : #fff;
+}

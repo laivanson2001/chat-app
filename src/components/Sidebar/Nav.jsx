@@ -12,10 +12,9 @@ const Nav = () => {
     <header className="flex-center justify-between my-2">
       <span
         onClick={() => navigate('/')}
-        className="font-rubikWet font-bold text-xl sm:text-2xl md:text-3xl select-none"
-        style={{ color: topicTheme }}
+        className="font-rubikWet font-bold text-xl sm:text-2xl md:text-3xl select-none logo-text"
       >
-        CornyChat
+        Atomic Chat
       </span>
 
       {/* Options control */}

@@ -5,6 +5,7 @@ import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
 import { init } from 'emoji-mart';
 import { updateEmojiChat } from '../../../firebase/services';
+import { toast } from 'react-toastify';
 
 init({ data });
 
@@ -12,6 +13,7 @@ const renderIcon = (showIcon, handleChangeEmotionChat) => {
   const curTheme = JSON.parse(localStorage.getItem('theme'));
   const handleEmojiSelect = async (e) => {
     await handleChangeEmotionChat(e?.id, e.skin ?? 1);
+    toast.success('Đổi biểu tượng cảm xúc thành công')
   };
   return (
     showIcon && (

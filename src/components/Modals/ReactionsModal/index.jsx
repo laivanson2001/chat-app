@@ -37,7 +37,7 @@ const ReactionsModal = ({ messageId, members, reactions }) => {
         {/* Header */}
         <div className="h-8 md:h-14 flex-center">
           <span className="font-bold text-xl md:text-2xl select-none">
-            Feelings about messages
+            Cảm xúc
           </span>
         </div>
 

@@ -58,7 +58,7 @@ const renderControlAccount = (
             className="flex-center w-5 h-5 text-[20px]"
             icon={faUser}
           />
-          <span>Your Profile</span>
+          <span>Trang cá nhân</span>
         </div>
         <div
           onClick={toggleTheme}
@@ -75,7 +75,7 @@ const renderControlAccount = (
               icon={faCloudSun}
             />
           )}
-          <span>{darkMode ? 'Dark Mode' : 'Light Mode'}</span>
+          <span>{darkMode ? 'Chế độ tối' : 'Chế độ sáng'}</span>
         </div>
         <div
           onClick={handleSignOut}
@@ -85,7 +85,7 @@ const renderControlAccount = (
             className="flex-center w-5 h-5 text-[20px]"
             icon={faArrowRightFromBracket}
           />
-          <span>Log out</span>
+          <span>Đăng xuất</span>
         </div>
       </div>
     )

@@ -8,6 +8,7 @@ import { AuthContext } from '../../context/AuthContext';
 import NoAvatar from '../../assets/imgs/NoAvatar.png';
 
 import ModalsTemplate from './ModalsTemplate';
+import { toast } from 'react-toastify';
 
 const CurrentUserInfoModal = () => {
   const { currentUser } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const CurrentUserInfoModal = () => {
         {/* information */}
         <div className="flex flex-col mx-4">
           <div className="min-h-[32px] flex items-center mb-1">
-            <div className="font-bold mr-2">Name:</div>
+            <div className="font-bold mr-2">Họ tên:</div>
             <div className="">{currentUser?.displayName}</div>
           </div>
           <div className="min-h-[32px] flex items-center mb-1">
@@ -29,10 +30,10 @@ const CurrentUserInfoModal = () => {
             <div className="">{currentUser?.email}</div>
           </div>
           <div className="min-h-[32px] flex items-center mb-1">
-            <div className="font-bold mr-2">ID:</div>
+            <div className="font-bold mr-2">Id:</div>
             <div className="">{currentUser?.uid}</div>
             <div
-              onClick={() => navigator.clipboard.writeText(currentUser?.uid)}
+              onClick={() => {navigator.clipboard.writeText(currentUser?.uid); toast.success('Đã sao chép')}}
               className="flex-center ml-5 px-2 py-1 rounded-md bg-hoverLightMode dark:bg-hover cursor-pointer border-2 border-solid border-main-color"
             >
               <FontAwesomeIcon className="text-xl" icon={faClipboard} />

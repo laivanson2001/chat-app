@@ -37,7 +37,7 @@ const SPcontent = ({ data, show }) => {
         ) : (
           <div className="flex-center overflow-hidden">
             <i className="font-bold text-red-700">
-              Don't have anything share yet!
+              Trống
             </i>
           </div>
         )}

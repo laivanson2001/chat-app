@@ -23,7 +23,7 @@ const MediaModal = ({ roomId }) => {
               content == 'img' && 'bg-inputLightMode dark:bg-hover'
             }`}
           >
-            Images
+            Ảnh
           </div>
           <div
             onClick={() => setContent('vid')}

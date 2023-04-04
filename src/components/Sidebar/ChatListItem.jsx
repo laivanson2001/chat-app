@@ -24,6 +24,7 @@ const ChatListItem = ({ roomId }) => {
   useEffect(() => {
     if (chatType == 'friend') {
       const index = members.findIndex((mem) => mem.uid != currentUser.uid);
+      console.log(friend);
       setFriend(members[index]);
     }
   }, [roomInfo]);
@@ -31,13 +32,13 @@ const ChatListItem = ({ roomId }) => {
   useEffect(() => {
     // If the last message sent by current user
     if (lastMessage?.senderId == currentUser.uid) {
-      setLastSentUserName('You');
+      setLastSentUserName('Bạn');
       return;
     } else {
       const memberSender = members?.find(
         (mem) => mem.uid == lastMessage.senderId,
       );
-      setLastSentUserName(memberSender?.displayName?.split(' ')[0]);
+      setLastSentUserName(memberSender?.displayName);
     }
   }, [roomInfo]);
 
@@ -64,8 +65,8 @@ const ChatListItem = ({ roomId }) => {
             {friend?.displayName || roomInfo?.roomName}
           </p>
           <span className="sm:max-w-[200px] text-ellipsis text-[14px] opacity-70">
-            {lastSentUserName || <i>Ruined</i>}:{' '}
-            {roomInfo?.lastMessage?.content || 'Start chatting...'}
+            {lastSentUserName || <i>Không xác định</i>}:{' '}
+            {roomInfo?.lastMessage?.content || 'Ấn để bắt đầu trò chuyện...'}
           </span>
         </div>
         <div className="flex flex-col">

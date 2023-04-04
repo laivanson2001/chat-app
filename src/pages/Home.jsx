@@ -12,7 +12,7 @@ const Home = () => {
       <Sidebar />
       <div className="hidden md:flex-center flex-1 h-full md:p-0 bg-lightMode dark:bg-darkMode">
         <div className="w-full flex-center text-xl md:text-2xl font-bold">
-          Please select a conversation !
+          Chọn cuộc trò chuyện để bắt đầu!
         </div>
       </div>
     </div>
